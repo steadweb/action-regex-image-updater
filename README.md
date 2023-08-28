@@ -16,3 +16,20 @@ These are all currently required to work.
 | PATH      | ./apps               | Paths to where your gitops apps are located       |
 | EMAIL     | foo@bar.com          | An email which git will use when committing       |
 | NAME      | Gitops               | The name of the user git will use when committing |
+
+## Action Example
+
+Use the following as an example:
+
+```
+- uses: steadweb/action-regex-image-updater@main
+  env:
+    TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    IMAGE: "ghcr.io/steadweb/node18-example"
+    USERNAME: "steadweb"
+    ORG: "steadweb"
+    REPO_NAME: "fleet-example"
+    PATH: "./apps"
+    EMAIL: "ljsteadman@gmail.com"
+    NAME: "Luke Steadman"
+```
