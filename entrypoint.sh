@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # 0 - Variables set within GH Secrets
-HOST=$HOST || "github.com"
-PROTCOL=$PROTOCOL || "https"
+HOST="github.com"
+PROTCOL="https"
 URL="$PROTCOL://$USERNAME:$TOKEN@$HOST"
 REPO="$URL/$ORG/$REPO_NAME"
 
