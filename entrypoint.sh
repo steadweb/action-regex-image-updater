@@ -5,6 +5,7 @@ HOST="github.com"
 PROTCOL="https"
 URL="$PROTCOL://$USERNAME:$TOKEN@$HOST"
 REPO="$URL/$ORG/$REPO_NAME"
+TYPE=$CHART_TYPE
 
 # Pre - Setup git with $EMAIL and $NAME variables
 /usr/bin/git config --global user.email "$EMAIL"
@@ -14,8 +15,13 @@ REPO="$URL/$ORG/$REPO_NAME"
 /usr/bin/git clone $REPO $REPO_NAME-tmp
 cd "$REPO_NAME-tmp"
 
-# 2 - Swap out the IMAGE:TAG for the current latest built tag
-/usr/bin/find $PATH -type f -exec /usr/bin/sed -i -e "s|\($IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)|$IMAGE:$TAG|" {} \;
+# 2 - Swap out the IMAGE:TAG for the current latest built tag.
+# If CHART_TYPE == helm, use tag: \S* regex, otherwise default to $IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)
+if [ "$TYPE" = "helm" ]; then
+  /usr/bin/find $PATH -type f -exec /usr/bin/sed -i -e "s|tag: \"\S*\"|tag: \"$TAG\"|" {} \;
+else
+  /usr/bin/find $PATH -type f -exec /usr/bin/sed -i -e "s|\($IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)|$IMAGE:$TAG|" {} \;
+fi
 
 # 3 - Commit and Push to the gitops directory
 /usr/bin/git --no-pager diff
