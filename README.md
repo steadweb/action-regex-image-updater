@@ -16,7 +16,7 @@ These are all currently required to work.
 | PATH       | ./apps               | Paths to where your gitops apps are located          |
 | EMAIL      | foo@bar.com          | An email which git will use when committing          |
 | NAME       | Gitops               | The name of the user git will use when committing    |
-| CHART_TYPE | Gitops               | Type of regex to use, default nothing, supports helm |
+| CHART_TYPE | helm                 | Type of regex to use, default nothing, supports helm |
 
 ## Action Example
 
