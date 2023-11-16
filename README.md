@@ -17,6 +17,7 @@ These are all currently required to work.
 | EMAIL      | foo@bar.com          | An email which git will use when committing          |
 | NAME       | Gitops               | The name of the user git will use when committing    |
 | CHART_TYPE | helm                 | Type of regex to use, default nothing, supports helm |
+| BRANCH     | main                 | The name of the branch to checkout when updating     |
 
 ## Action Example
 
@@ -30,6 +31,7 @@ Use the following as an example:
     USERNAME: "steadweb"
     ORG: "steadweb"
     REPO_NAME: "fleet-example"
+    BRANCH: "main"
     PATH: "./apps"
     EMAIL: "ljsteadman@gmail.com"
     NAME: "Luke Steadman"
