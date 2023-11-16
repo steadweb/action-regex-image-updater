@@ -18,7 +18,7 @@ cd "$REPO_NAME-tmp"
 # 2 - Swap out the IMAGE:TAG for the current latest built tag.
 # If CHART_TYPE == helm, use tag: \S* regex, otherwise default to $IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)
 if [ "$TYPE" = "helm" ]; then
-  /usr/bin/find $PATH -type f -exec /usr/bin/sed -i -e "s|tag: \"\S*\"|tag: \"$TAG\"|" {} \;
+  /usr/bin/find $PATH -type f -exec /usr/bin/sed -i -e "s|tag: \S*|tag: $TAG|" {} \;
 else
   /usr/bin/find $PATH -type f -exec /usr/bin/sed -i -e "s|\($IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)|$IMAGE:$TAG|" {} \;
 fi
