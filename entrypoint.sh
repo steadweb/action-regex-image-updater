@@ -6,7 +6,7 @@ PROTCOL="https"
 URL="$PROTCOL://$USERNAME:$TOKEN@$HOST"
 REPO="$URL/$ORG/$REPO_NAME"
 TYPE=$CHART_TYPE
-BRANCH=$BRANCH
+BRANCH="main"
 
 # Pre - Setup git with $EMAIL and $NAME variables
 /usr/bin/git config --global user.email "$EMAIL"
