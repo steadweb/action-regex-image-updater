@@ -16,7 +16,7 @@ BRANCH="main"
 /usr/bin/git clone $REPO $REPO_NAME-tmp
 cd "$REPO_NAME-tmp"
 ls -lah
-/usr/bin/git clone $BRANCH 
+/usr/bin/git checkout $BRANCH 
 
 # 2 - Swap out the IMAGE:TAG for the current latest built tag.
 # If CHART_TYPE == helm, use tag: \S* regex, otherwise default to $IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)
