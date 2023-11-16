@@ -6,6 +6,7 @@ PROTCOL="https"
 URL="$PROTCOL://$USERNAME:$TOKEN@$HOST"
 REPO="$URL/$ORG/$REPO_NAME"
 TYPE=$CHART_TYPE
+BRANCH=$BRANCH
 
 # Pre - Setup git with $EMAIL and $NAME variables
 /usr/bin/git config --global user.email "$EMAIL"
@@ -14,6 +15,8 @@ TYPE=$CHART_TYPE
 # 1 - Clone a new copy of the repo into a tmp directory
 /usr/bin/git clone $REPO $REPO_NAME-tmp
 cd "$REPO_NAME-tmp"
+ls -lah
+/usr/bin/git clone $BRANCH 
 
 # 2 - Swap out the IMAGE:TAG for the current latest built tag.
 # If CHART_TYPE == helm, use tag: \S* regex, otherwise default to $IMAGE:v[0-9]\+\.[0-9]\+\.[0-9]\+\)
