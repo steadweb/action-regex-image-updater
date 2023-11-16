@@ -15,7 +15,6 @@ BRANCH="main"
 # 1 - Clone a new copy of the repo into a tmp directory
 /usr/bin/git clone $REPO $REPO_NAME-tmp
 cd "$REPO_NAME-tmp"
-ls -lah
 /usr/bin/git checkout $BRANCH 
 
 # 2 - Swap out the IMAGE:TAG for the current latest built tag.
